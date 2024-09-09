@@ -94,8 +94,17 @@ export function playGame() {
     computerScore: 0,
   };
 
-}
+  while (true) {
+    const dataForRound = playOneRound();
 
+    if (null === dataForRound) {
+      break;
+    }
+
+    model = updateModel(model, dataForRound);
+    showProgressInConsole(dataForRound, model);
+  }
+}
 
 export function updateModel(model, dataForRound) {
   switch (dataForRound.outcome) {
@@ -119,6 +128,5 @@ export function showProgressInConsole(dataForRound, model) {
     },
   ]);
 }
-
 
 playGame();
