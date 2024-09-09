@@ -106,7 +106,18 @@ export function playGame() {
   }
 }
 
-export function updateModel(model, dataForRound) {
+type dataForRound = {
+  playerMove: string,
+  computerMove: string,
+  outcome: string
+}
+
+type model = {
+  playerScore: number,
+  computerScore: number
+}
+
+export function updateModel(model: model, dataForRound: dataForRound) {
   switch (dataForRound.outcome) {
     case OUTCOME_WIN:
       return { ...model, playerScore: model.playerScore + 1 };
@@ -117,7 +128,7 @@ export function updateModel(model, dataForRound) {
   }
 }
 
-export function showProgressInConsole(dataForRound, model) {
+export function showProgressInConsole(dataForRound: dataForRound, model: model) {
   console.table([
     {
       "Your choice": dataForRound.playerMove,
